@@ -63,9 +63,15 @@
 
             // All units are in the set measurement for the document
             // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
-            doc.setFontSize(40);
-            doc.text(35, 25, "My Exported Charts");
+            doc.setFontSize(20);
+            doc.text(35, 25, "Informe Codelco Empresas");
+            var titulos = [];
+            titulos.push("Gráfico 1");
+            titulos.push("Gráfico 2");
 
+            var pop = 15;
+            var i = 0;
+            var margen = 0;
             //loop through each chart
             $('.myChart').each(function(index) {
                 var imageData = $(this).highcharts().createCanvas();
@@ -74,11 +80,15 @@
                 // you will need to check if you have gone bigger 
                 // than a page and do doc.addPage() before adding 
                 // another image.
-
+                doc.setFontSize(15);
+                doc.text(35, 25 + pop, titulos[i]);
+                i++;
                 /**
                  * addImage(imagedata, type, x, y, width, height)
                  */
-                doc.addImage(imageData, 'JPEG', 45, (index * chartHeight) + 40, 120, chartHeight);
+                doc.addImage(imageData, 'JPEG', 45, ((index * chartHeight) + 40 ) + margen, 120, chartHeight);
+                pop = pop + 100;
+                margen= margen + 30;
             });
 
 
