@@ -93,7 +93,13 @@
 
 
             //save with name
-            doc.save('demo.pdf');
+            //doc.save('demo.pdf');
+            //or
+            //open the pdf in a new page in the browser
+            var string = doc.output('datauristring');
+            var x = window.open();
+            x.document.open();
+            x.document.location=string;
         });
 
 
